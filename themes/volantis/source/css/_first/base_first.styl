@@ -1,0 +1,160 @@
+// 全局基础样式和 CSS 变量定义
+stellar-root-first()
+:root
+  // CSS 变量定义
+  --color-site-body: $color-site-bg
+  --color-site-bg: $color-site-bg
+  --color-site-inner: $color-site-inner
+  --color-site-footer: $color-site-footer
+  --color-card: $color-card
+  --color-text: $color-text
+  --color-block: $color-block
+  --color-inlinecode: $color-inlinecode
+  --color-codeblock: $color-codeblock
+  --color-h1: $color-h1
+  --color-h2: $color-h2
+  --color-h3: $color-h3
+  --color-h4: $color-h4
+  --color-h5: $color-h5
+  --color-h6: $color-h6
+  --color-p: $color-p
+  --color-list: $color-list
+  --color-list-hl: $color-list-hl
+  --color-meta: $color-meta
+  --color-read-bkg: $color-read-bkg
+  --color-read-post: $color-read-post
+  --color-copyright-bkg: $color-copyright-bkg
+  --link-color: #00323c
+  // 派生色
+  --color-text-a10: alpha($color-text, .1)
+  --color-text-a50: alpha($color-text, .5)
+  --color-text-a60: alpha($color-text, .6)
+  --color-text-a70: alpha($color-text, .7)
+  --color-text-a80: alpha($color-text, .8)
+  --color-text-a85: alpha($color-text, .85)
+  --color-text-a90: alpha($color-text, .9)
+  --color-card-a50: alpha($color-card, .5)
+  --color-card-a60: alpha($color-card, .6)
+  --color-card-a70: alpha($color-card, .7)
+  --color-card-a80: alpha($color-card, .8)
+  --color-card-a90: alpha($color-card, .9)
+  --color-card-darken2: darken($color-card, 2)
+  --color-card-lighten5: lighten($color-card, 5)
+  --color-p-a20: alpha($color-p, .2)
+  --color-p-a70: alpha($color-p, .7)
+  --color-p-a75: alpha($color-p, .75)
+  --color-block-lighten3: lighten($color-block, 3)
+  --color-block-darken2: darken($color-block, 2)
+  --color-mix60-p-card: mix($color-p, $color-card, 60)
+  --color-codeblock-darken6: darken($color-codeblock, 6)
+  --color-mix75-theme-text: mix($color-theme, $color-text, 75)
+  --color-mix90-block-text: mix($color-block, $color-text, 90)
+
+
+
+
+// 在中英文和数字之间都自动添加间距
+// https://caniuse.com/mdn-css_properties_text-autospace
+:root
+  text-autospace: normal
+  
+// 基础 reset
+*
+  box-sizing: border-box
+  outline: none
+  margin: 0
+  padding: 0
+  scrollbar()
+
+html
+  color: var(--color-text)
+  width: 100%
+  height: 100%
+  font-family: $fontfamily
+  font-size: $fontsize-root
+  >
+    if hexo-config('custom_css.scrollbar.size')
+      scrollbar(convert(hexo-config('custom_css.scrollbar.size')), convert(hexo-config('custom_css.scrollbar.border')) || 0px)
+
+body
+  background-color: var(--color-site-body)
+  text-rendering: optimizelegibility
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+  line-height: $lineheight
+  -webkit-text-size-adjust: 100%
+  -ms-text-size-adjust: 100%
+  &.modal-active
+    overflow: hidden
+    @media screen and (max-width: $modal-threshold)
+      position: fixed
+      top: 0
+      right: 0
+      bottom: 0
+      left: 0
+
+a
+  color: var(--link)
+  cursor: pointer
+  text-decoration: none
+  trans()
+  &:hover
+    color: var(--accent)
+  &:active,&:hover
+    outline: 0
+
+ul,ol
+  padding-left: 0
+  li
+    list-style: none
+
+header
+  display: block
+
+img
+  border: 0
+  background: none
+  max-width: 100%
+
+svg:not(:root)
+  overflow: hidden
+
+hr
+  -moz-box-sizing: content-box
+  box-sizing: content-box
+  height: 0
+  border: 0
+  border-radius: 1px
+  border-bottom: 1px solid alpha($color-text, .1)
+
+button,input
+  color: inherit
+  font: inherit
+  margin: 0
+  background: none
+  border: none
+
+button
+  overflow: visible
+  text-transform: none
+  -webkit-appearance: button
+  cursor: pointer
+
+
+.blur
+  @supports (backdrop-filter: blur(20px))
+    background: var(--color-card-a90) !important
+    backdrop-filter: saturate(200%) blur(20px)
+
+if hexo-config('comments.service')=='discuss' || hexo-config('comments.service')=='twikoo' || hexo-config('comments.service')=='waline' || hexo-config('comments.service')=='artalk'
+  .blur#comments
+    @supports (backdrop-filter: blur(20px))
+      backdrop-filter: unset
+  #layoutHelper-comments
+    margin-bottom: 100px
+
+.shadow
+  box-shadow: $boxshadow-card
+  &.floatable
+    trans()
+    &:hover
+      box-shadow: $boxshadow-card-float

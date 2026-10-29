@@ -1,0 +1,9 @@
+<%- partial('_pre') %>
+<section class="widget <%- page.widget_style %>">
+  <%- partial('header', {item: item}) %>
+  <div class='content'>
+    <% getList(item.content).forEach(function(row){ %>
+      <%- markdown(row) %>
+    <% }) %>
+  </div>
+</section>

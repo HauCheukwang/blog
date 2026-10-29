@@ -1,0 +1,88 @@
+navbar:
+  archive: Archive
+  category: Category
+  tag: Tag
+
+post:
+  pin: Top
+  readmore: Read More
+  readoriginal: Read Original
+  wordcount: '%s words'
+  duration: '%s min'
+  comments: Comments
+  comments_load: Load %s
+  comments_check: Checking if %s is accessible...
+  comments_placeholder: Unable to load %s, please make sure your network can access.
+  copy_button: Copy
+  copy_success: Copied
+  copy_failure: Copy failed
+  updated: updated at
+  prev_page: Previous
+  next_page: Next
+  copyright:
+    author: Post author
+    link: Post link
+    license_title: Copyright Notice
+    license_content: "All articles in this blog are licensed under %s unless stating additionally."
+    date: Posted on
+    updated: Update
+    references: References
+    license: License
+
+footer:
+  license: 'Blog content follows the [Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)'
+  use: Use
+  theme: as theme
+  total_views: total visits
+  page_views: page visitors
+  total_visitors: total visitors
+  times: times
+  peoples: peoples
+  site_source: Uses %s as theme. You can find [source](%s) in %s.
+  site_views: The visits is about %s, and the visitors is about %s.
+
+symbol:
+  comma: ", "
+  period: ". "
+  colon: ": "
+  brackets_l: "("
+  brackets_r: ")"
+
+kill:
+  title: "Sorry, your browser cannot access this site"
+  more: "Learn more >"
+  noscript: "This page requires browser support (enable) JavaScript"
+  ie: "Microsoft has terminated support for Internet Explorer (IE) 10 and earlier versions in 2016. <br/>There are great security risks to continue using it. Please use contemporary mainstream browsers to access."
+
+search:
+  title: Search
+  load_data: Loading the Database
+  hits_empty: "We didn't find any results for the search: ${query}."
+  hits_stats: '${hits} results found in ${time} ms'
+  normal: 'Enter keywords to search'
+  hits_found: '${totalResults} results found'
+  history: Search History
+  no_history: No search history
+  clear_history: Clear History
+  filter_all: All
+  filter_posts: Posts
+  filter_pages: Pages
+  filter_tags: Tags
+  searching: Searching...
+  placeholder_search: 'Search posts, tags or categories...'
+  label_posts: Posts
+  label_pages: Pages
+  label_tags: Tags
+  no_title: Untitled
+  config_invalid: 'Search configuration is invalid, please check your settings.'
+
+error:
+  what: Page Not Found
+  why: The address may be entered incorrectly or the address has been deleted.
+
+meta:
+  all_notes: All Notes
+  tree: On This Page
+  more: More
+  topic: Topic
+

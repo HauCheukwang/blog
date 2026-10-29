@@ -1,0 +1,177 @@
+// 按钮标签插件样式（内联按钮 + 按钮组）
+// 内联按钮：span.btn 包裹的链接按钮
+// inline btn
+.article span.btn, .md span.btn
+  display: inline
+  a
+    text-decoration: none
+    border-bottom: none
+    display: inline-block
+    padding: 3px 4px 2px 4px
+    margin: 2px
+    line-height: 1.1
+    border-radius: 2px
+    i
+      margin-right: 2px
+    trans()
+    &:not([href])
+      opacity: 0.5
+      &:hover
+        cursor: $not-allowed,not-allowed
+  // 默认边框按钮和常规按钮样式
+  & a, &.regular a
+    color: $color-button
+    border: 1px solid @color
+    &:hover
+      color: var(--accent)
+      border-color: var(--accent)
+    i
+      margin-right: 4px
+  // 常规和实心按钮加大内边距
+  &.regular a, &.solid a
+    padding: 8px 12px
+  // 实心按钮：无边框，使用主题色背景
+  &.solid a
+    border: none
+    background: $color-button
+    color: $color-inner
+    &:hover
+      color: $color-inner
+      background: var(--accent)
+  // 大号按钮
+  &.large a
+    font-size: 1rem
+    padding: 12px 36px
+    i
+      margin-right: 8px
+  &.center
+    display: block
+    text-align: center
+
+// 按钮组：div.btns 包裹的多按钮容器
+// btns
+.article div.btns, .md div.btns
+  margin: 0 -0.5 * $gap
+  &,p,a
+    font-size: $fontsize-code
+    color: var(--color-p)
+  b
+    font-size: $fontsize-meta
+  display: flex
+  flex-wrap: wrap
+  align-items: flex-start
+  overflow: visible
+  line-height: 1.8
+  // 宽松布局：加大水平内边距
+  &.wide>a
+    padding-left: $gap*2
+    padding-right: $gap*2
+  // 填充模式：按钮自动撑满可用宽度
+  &.fill>a
+    flex-grow: 1
+    width: auto
+  // 均匀分布对齐
+  &.around
+    justify-content: space-around
+  // 居中对齐
+  &.center
+    justify-content: center
+  // 响应式网格布局：2-5 列，移动端自动降列
+  &.grid2>a
+    width: "calc(100%/2 - %s)" % $gap
+    @media screen and (max-width: $device-laptop)
+      width: "calc(100%/2 - %s)" % $gap
+    @media screen and (max-width: $device-tablet)
+      width: "calc(100%/2 - %s)" % $gap
+    @media screen and (max-width: $device-mobile)
+      width: "calc(100%/1 - %s)" % $gap
+  &.grid3>a
+    width: "calc(100%/3 - %s)" % $gap
+    @media screen and (max-width: $device-laptop)
+      width: "calc(100%/3 - %s)" % $gap
+    @media screen and (max-width: $device-tablet)
+      width: "calc(100%/3 - %s)" % $gap
+    @media screen and (max-width: $device-mobile)
+      width: "calc(100%/1 - %s)" % $gap
+  &.grid4>a
+    width: "calc(100%/4 - %s)" % $gap
+    @media screen and (max-width: $device-laptop)
+      width: "calc(100%/3 - %s)" % $gap
+    @media screen and (max-width: $device-tablet)
+      width: "calc(100%/3 - %s)" % $gap
+    @media screen and (max-width: $device-mobile)
+      width: "calc(100%/2 - %s)" % $gap
+  &.grid5>a
+    width: "calc(100%/5 - %s)" % $gap
+    @media screen and (max-width: $device-laptop)
+      width: "calc(100%/4 - %s)" % $gap
+    @media screen and (max-width: $device-tablet)
+      width: "calc(100%/3 - %s)" % $gap
+    @media screen and (max-width: $device-mobile)
+      width: "calc(100%/2 - %s)" % $gap
+  // 按钮组内单个链接按钮（卡片样式）
+  a
+    trans()
+    text-decoration: none
+    border-bottom: none
+    margin: $gap * 0.5
+    margin-top: "calc(1.25 * %s + 32px)" % $gap
+    min-width: 120px
+    font-weight: bold
+    display: flex
+    justify-content: flex-start
+    align-content: center
+    align-items: center
+    flex-direction: column
+    padding: $gap * 0.5
+    text-align: center
+    // 按钮图标/图片样式（圆形浮动于卡片上方）
+    &>img:first-child, &>i:first-child
+      trans()
+      height: 64px
+      width: 64px
+      box-shadow: $boxshadow-card
+      &.auto
+        width: auto
+      margin: $gap $gap * 0.5 $gap * 0.25 $gap * 0.5
+      margin-top: "calc(-1.25 * %s - 32px)" % $gap
+      border: 2px solid var(--color-card)
+      background: $color-inner
+      line-height: 60px
+      font-size: 28px
+    &>i:first-child
+      color: $color-inner
+      background: var(--theme)
+    background: var(--color-block)
+    border-radius: 4px
+    p,b
+      margin: .25em
+      font-weight: normal
+      line-height: 1.25
+      word-wrap: break-word
+    b
+      font-weight: bold
+      line-height: 1.3
+    img
+      margin: .4em auto
+    &:not([href])
+      cursor: default
+      color: inherit
+    // 悬停效果：背景色变化 + 图标上浮放大
+    &[href]:hover
+      background: alpha($color-hover, 15%)
+      &,b
+        color: var(--accent)
+      &>img:first-child, &>i:first-child
+        transform: scale(1.1) translateY(-8px)
+        box-shadow: $boxshadow-float
+      &>i:first-child
+        background: var(--accent)
+  // 圆形图标变体
+  &.circle a
+    &>img:first-child, &>i:first-child
+      border-radius: 32px
+  // 圆角图标变体
+  &.rounded a
+    &>img:first-child, &>i:first-child
+      border-radius: 16px

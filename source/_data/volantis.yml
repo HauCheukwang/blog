@@ -1,0 +1,40 @@
+# Volantis 主题配置覆盖（在 Hexo 根目录）
+# 参考文档：https://volantis.js.org/
+
+# 首页封面
+cover:
+  title: '我的博客'
+  subtitle: '基于 Hexo + Volantis 主题'
+  search: '搜索文章、标签……'
+
+# 导航栏
+navbar:
+  search: '搜索……'
+  menu:
+    - name: 首页
+      icon: fa-solid fa-rss
+      url: /
+    - name: 分类
+      icon: fa-solid fa-folder-open
+      url: categories/
+    - name: 标签
+      icon: fa-solid fa-tags
+      url: tags/
+    - name: 归档
+      icon: fa-solid fa-archive
+      url: archives/
+    - name: 友链
+      icon: fa-solid fa-link
+      url: friends/
+    - name: 关于
+      icon: fa-solid fa-info-circle
+      url: about/
+
+# 侧边栏博主信息
+sidebar:
+  widget_library:
+    blogger:
+      class: blogger
+      avatar: https://github.com/HauCheukwang.png
+      name: Cheukwang Hau
+      description: 一个热爱技术与生活的博客
