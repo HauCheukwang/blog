@@ -5,11 +5,9 @@ on:
     branches: [main]
   workflow_dispatch:
 
-# 赋予 GITHUB_TOKEN 发布 Pages 的权限（无需任何外部 Secret）
+# 推送到 gh-pages 分支需要写权限
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 # 同一时间只允许一个部署，避免冲突
 concurrency:
@@ -19,9 +17,6 @@ concurrency:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -37,11 +32,11 @@ jobs:
       - name: Generate static site
         run: npx hexo generate
 
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Deploy to GitHub Pages (gh-pages branch)
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          path: public
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          publish_branch: gh-pages
+          force_orphan: true
+          # 默认写入 .nojekyll，关闭 Jekyll 处理（避免 _ 开头文件被忽略）

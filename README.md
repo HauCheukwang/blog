@@ -55,7 +55,8 @@ npx hexo generate           # 本地构建，检查无误
 ## 五、部署原理（自动）
 
 - `main` 分支存放**源码**；`.github/workflows/deploy.yml` 在每次 push 到 `main` 时：
-  1. `checkout` 源码 → 2. 装 Node 22 → 3. `npm install` → 4. `npx hexo generate` → 5. 上传产物到 `gh-pages`（含 `.nojekyll`）→ 6. 官方 `deploy-pages` 发布。
+  1. `checkout` 源码 → 2. 装 Node 22 → 3. `npm install` → 4. `npx hexo generate` → 5. 用 `peaceiris/actions-gh-pages` 把 `public/` 推送到 `gh-pages` 分支（自动写入 `.nojekyll`）。
+- 仓库 Pages 采用 **legacy 分支部署**（发布源 = `gh-pages` 分支），因此由 `gh-pages` 分支自动发布站点。
 - 使用仓库自带的 `GITHUB_TOKEN`，**无需配置任何 Secret**。
 - 因此：**“更新一次博文 → 推送一次 main → 站点自动重新部署”** 已闭环。
 
