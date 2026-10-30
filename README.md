@@ -1,4 +1,4 @@
-# 卓宏的博客 · Cheukwang Hau's Blog
+#  Cheukwang Hau's Blog
 
 基于 **Hexo 8** + **Volantis 6.8.3** 主题构建，部署在 **GitHub Pages**（项目页）：
 
@@ -126,9 +126,4 @@ Volantis 主题的 `replace` 机制（`themes/volantis/_config.yml`）会把主�
 | 2026-10 | `d1c3a7b` | **曾**把 CDN 改为 gcore.jsdelivr.net 镜像（`replace` 改 unpkg→gcore/npm、dns_prefetch 改 gcore、新增 `scripts/replace-assets.js`） |
 | 2026-10-29 | 本次提交 | **撤销**上述 jsDelivr 镜像方案：恢复 `replace` 为 Volantis 默认（cdn.jsdelivr.net→unpkg）、`dns_prefetch` 恢复 unpkg、删除 `scripts/replace-assets.js`；补依赖 `hexo-generator-json-content`；新增 `scripts/sync_via_api.py` 与 `README.md`；把全部源码首次推送到 `main` 分支做全盘备份 |
 
-## 十、安全提示
 
-- 本仓库历史上曾使用两个 GitHub Token（只读 `github_pat_...` 与全权 `ghp_...`）进行部署/同步。
-  建议到 GitHub **Settings → Developer settings → Personal access tokens** 将其吊销，
-  日常部署请依赖 Actions 自带的 `GITHUB_TOKEN`，手动同步再用短期细粒度令牌。
-- 不要把令牌写进仓库或提交历史。
